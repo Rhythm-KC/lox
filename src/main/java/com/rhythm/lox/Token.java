@@ -1,7 +1,5 @@
 package com.rhythm.lox;
 
-import com.rhythm.lox.TokenType;
-
 class Token {
     final TokenType type;
     final String lexeme;
