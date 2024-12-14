@@ -149,8 +149,10 @@ public class Scanner {
             Lox.error(line, "Unterminated String");
             return;
         }
+        advance();
 
-        var value = source.subSequence(start + 1, current -1);
+        var value = source.substring(start + 1, current - 1);
+        System.out.println(value);
         addToken(STRING, value);
     }
 
@@ -198,6 +200,7 @@ public class Scanner {
             if (peek() == '\n') line++;
             advance();
         }                    
+        match('/');
     }
 
 }

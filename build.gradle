@@ -16,6 +16,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+}
+
 application{
     mainClass = 'com.rhythm.lox.Lox'
 }
