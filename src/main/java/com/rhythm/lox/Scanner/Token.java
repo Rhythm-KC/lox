@@ -1,6 +1,6 @@
-package com.rhythm.lox;
+package com.rhythm.lox.Scanner;
 
-class Token {
+public class Token {
     final TokenType type;
     final String lexeme;
     final Object literal;

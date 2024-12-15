@@ -1,4 +1,4 @@
-package com.rhythm.lox;
+package com.rhythm.lox.Scanner;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

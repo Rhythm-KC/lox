@@ -1,4 +1,4 @@
-package com.rhythm.lox;
+package com.rhythm.lox.Scanner;
 
 enum TokenType{
      // Single-character tokens.

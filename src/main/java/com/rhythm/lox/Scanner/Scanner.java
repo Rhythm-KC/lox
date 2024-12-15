@@ -1,11 +1,13 @@
-package com.rhythm.lox;
+package com.rhythm.lox.Scanner;
 
-import static com.rhythm.lox.TokenType.*;
+import static com.rhythm.lox.Scanner.TokenType.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.rhythm.lox.Utils.LoxError;
 
 public class Scanner {
     private static final Map<String, TokenType> keywords;
@@ -38,7 +40,7 @@ public class Scanner {
     private int current = 0;
     private int line = 1; 
 
-    Scanner (String source){
+    public Scanner (String source){
         this.source = source;
     }
 
@@ -110,7 +112,7 @@ public class Scanner {
                 else if (isAlpha(c)){
                     identifier();
                 }
-                Lox.error(line, "Unexpected character.");
+                LoxError.error(line, "Unexpected character.");
             break;
         }
     }
@@ -146,7 +148,7 @@ public class Scanner {
         }
 
         if (isEnd()){
-            Lox.error(line, "Unterminated String");
+            LoxError.error(line, "Unterminated String");
             return;
         }
         advance();
@@ -194,7 +196,7 @@ public class Scanner {
     private void multiLineComment(){
         while (!match('*') && peek() != '/'){
             if (peek() == '\0'){
-                Lox.error(line, "Unterminated MultiLine char");
+                LoxError.error(line, "Unterminated MultiLine char");
                 break;
             }
             if (peek() == '\n') line++;
