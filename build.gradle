@@ -18,8 +18,36 @@ repositories {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 application{
     mainClass = 'com.rhythm.lox.Lox'
+}
+
+tasks.named('test') {
+    useJUnitPlatform() // Use JUnit 5 for tests
+}
+
+tasks.register('lox', Jar) {
+    dependsOn 'test'
+    archiveBaseName.set("jlox")
+    archiveClassifier.set('')
+    from sourceSets.main.output
+    manifest {
+        attributes('Main-Class': 'com.rhythm.lox.Lox.java') 
+    }
+}
+
+// Task for build variant 2
+tasks.register('GenerateAsst', Jar) {
+    archiveClassifier.set('GenerateAsst')
+    from sourceSets.main.output
+    manifest {
+        attributes('Main-Class': 'com.rhythm.tool.GenerateAsst.java') 
+    }
+}
+
+tasks.register('buildAll') {
+    dependsOn 'lox', 'GenerateAsst'
 }
