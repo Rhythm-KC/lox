@@ -51,3 +51,15 @@ tasks.register('GenerateAsst', Jar) {
 tasks.register('buildAll') {
     dependsOn 'lox', 'GenerateAsst'
 }
+
+tasks.register("runGenAsst", JavaExec) {
+    group = "application"
+    description = "Run the Generate Asset tool"
+
+    mainClass.set("com.rhythm.tool.GenerateAsst") // Replace with your main class
+    classpath = sourceSets.main.runtimeClasspath
+    args=[]
+        doFirst {
+        println "Running GenerateAsst with arguments: ${classpath}"
+    }
+}
