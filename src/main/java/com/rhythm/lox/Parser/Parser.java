@@ -3,7 +3,6 @@ package com.rhythm.lox.Parser;
 
 import java.util.List;
 
-import com.rhythm.lox.Lox;
 import com.rhythm.lox.Scanner.Token;
 import com.rhythm.lox.Scanner.TokenType;
 import com.rhythm.lox.Utils.LoxError;
