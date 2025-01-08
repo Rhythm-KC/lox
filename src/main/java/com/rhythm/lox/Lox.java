@@ -8,9 +8,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import com.rhythm.lox.Parser.Expr;
 import com.rhythm.lox.Scanner.Scanner;
 import com.rhythm.lox.Scanner.Token;
+import com.rhythm.lox.Scanner.TokenType;
 import com.rhythm.lox.Utils.LoxError;
+import com.rhythm.lox.Parser.AstPrinter;
+import com.rhythm.lox.Parser.Parser;;
 
 public class Lox{
     static boolean hadError = false;
@@ -59,5 +63,12 @@ public class Lox{
         for (Token token : tokens){
             System.out.println(token);
         }
+
+            Parser parser = new Parser(tokens);
+            Expr expression = parser.parse();
+
+            if (hadError) return;
+
+            System.out.println(new AstPrinter().print(expression));
     }
 }
